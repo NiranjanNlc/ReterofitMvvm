@@ -10,7 +10,9 @@ import com.example.reterofitmvvm.R
 import com.example.reterofitmvvm.databinding.ActivityMainBinding
 import com.example.reterofitmvvm.modal.repo.UniversityRepo
 import com.example.reterofitmvvm.modal.reterofit.RetrofitService
-import com.example.reterofitmvvm.util.DaggerViewModalComponent
+import com.example.reterofitmvvm.util.AllComponent
+import com.example.reterofitmvvm.util.DaggerAllComponent
+import com.example.reterofitmvvm.util.TestApp
 import com.example.reterofitmvvm.util.ViewModalComponent
 import com.example.reterofitmvvm.viewmodal.UniversityViewModal
 import com.example.reterofitmvvm.viewmodal.ViewModalFactory
@@ -59,9 +61,14 @@ class MainActivity : AppCompatActivity()
 
     private fun initialiseSampleViewModal()
     {
-        val component =DaggerViewModalComponent.create();
+       // val component =DaggerViewModalComponent.create();
        // val repository =UniversityRepo(RetrofitService.getInstance())
        // val repository= component.getRepo()
+        var component =  DaggerAllComponent.builder().viewModalComponent((application as TestApp).getViewModal())
+            .build()
+        component.inject(this)
+        //build()
+        println("Reterofit instance " + repository)
         sampleViewModal= ViewModalFactory( repository).create(UniversityViewModal::class.java)
     }
 }

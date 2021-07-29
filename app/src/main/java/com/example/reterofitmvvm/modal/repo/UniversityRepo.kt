@@ -21,6 +21,7 @@ class UniversityRepo @Inject constructor(private  val service: RetrofitService)
 
             private fun getListOfUniversity(body: List<Map<String,Any>>?) : List<University>?
             {
+                println(" rterofit instance "+ service.toString())
                 val universities: MutableList<University> = mutableListOf()
                 body?.forEach {
                     universities.add(University(it?.get("name").toString()))
@@ -37,6 +38,7 @@ class UniversityRepo @Inject constructor(private  val service: RetrofitService)
 
             override fun onFailure(call: Call<List<Map<String, Any>>>, t: Throwable) {
                 TODO("Not yet implemented")
+                println(" Failure implementes ..................")
             }
 
 
