@@ -11,7 +11,7 @@ import javax.inject.Inject
 class UniversityRepo @Inject constructor(private  val service: RetrofitService)
 {
     var universities =MutableLiveData<List<University>>()
-    val allUniversity  = service.getAllUniversity()
+    private val allUniversity  = service.getAllUniversity()
 
     fun getUniversities()
     {
@@ -19,14 +19,14 @@ class UniversityRepo @Inject constructor(private  val service: RetrofitService)
         {
 
 
-            private fun getListOfUniversity(body: List<Map<String,Any>>?) : List<University>?
+            private fun getListOfUniversity(body: List<Map<String,Any>>?) : List<University>
             {
-                println(" rterofit instance "+ service.toString())
+                println(" rterofit instance $service")
                 val universities: MutableList<University> = mutableListOf()
                 body?.forEach {
-                    universities.add(University(it?.get("name").toString()))
+                    universities.add(University(it["name"].toString()))
                 }
-                return universities;
+                return universities
             }
 
             override fun onResponse(
@@ -37,8 +37,7 @@ class UniversityRepo @Inject constructor(private  val service: RetrofitService)
             }
 
             override fun onFailure(call: Call<List<Map<String, Any>>>, t: Throwable) {
-                TODO("Not yet implemented")
-                println(" Failure implementes ..................")
+                 println(" Failure implementes ..................")
             }
 
 

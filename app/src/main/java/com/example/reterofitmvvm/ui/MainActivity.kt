@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.reterofitmvvm.R
 import com.example.reterofitmvvm.databinding.ActivityMainBinding
 import com.example.reterofitmvvm.modal.repo.UniversityRepo
-import com.example.reterofitmvvm.modal.reterofit.RetrofitService
-import com.example.reterofitmvvm.util.AllComponent
 import com.example.reterofitmvvm.util.DaggerAllComponent
 import com.example.reterofitmvvm.util.TestApp
 import com.example.reterofitmvvm.util.ViewModalComponent
@@ -47,8 +45,7 @@ class MainActivity : AppCompatActivity()
 
     private fun observeChange()
     {
-     sampleViewModal.university.observe(this, Observer
-     {
+     sampleViewModal.university.observe(this, {
          adapter.submitList(it)
      })
     }
@@ -64,11 +61,11 @@ class MainActivity : AppCompatActivity()
        // val component =DaggerViewModalComponent.create();
        // val repository =UniversityRepo(RetrofitService.getInstance())
        // val repository= component.getRepo()
-        var component =  DaggerAllComponent.builder().viewModalComponent((application as TestApp).getViewModal())
+        val component =  DaggerAllComponent.builder().viewModalComponent((application as TestApp).getViewModal())
             .build()
         component.inject(this)
         //build()
-        println("Reterofit instance " + repository)
+        println("Reterofit instance $repository")
         sampleViewModal= ViewModalFactory( repository).create(UniversityViewModal::class.java)
     }
 }

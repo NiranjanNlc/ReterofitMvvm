@@ -3,7 +3,7 @@ package com.example.reterofitmvvm.util
 import android.app.Application
 
 
-public class TestApp  : Application() {
+class TestApp  : Application() {
 
     private var component: ViewModalComponent? = null
 
@@ -14,7 +14,7 @@ public class TestApp  : Application() {
         component = DaggerViewModalComponent.create()
     }
 
-    public fun  getViewModal(): ViewModalComponent? = component
+    fun  getViewModal(): ViewModalComponent? = component
 
 
 }

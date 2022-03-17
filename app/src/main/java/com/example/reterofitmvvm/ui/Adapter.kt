@@ -15,12 +15,12 @@ class Adapter: ListAdapter<University,  Adapter.UniversityViewHolder>(GIRLS_COMP
         val GIRLS_COMPARATOR = object : DiffUtil.ItemCallback<University>() {
             override fun areItemsTheSame(oldItem: University, newItem: University): Boolean {
                 println(" item same ")
-                return oldItem == newItem;
+                return oldItem == newItem
             }
 
             override fun areContentsTheSame(oldItem: University, newItem: University): Boolean {
                 print(" Content same ")
-                return oldItem.name.equals(newItem.name)
+                return oldItem.name == newItem.name
             }
         }
     }

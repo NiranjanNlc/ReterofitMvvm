@@ -6,8 +6,8 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [OurModule::class])
-public interface ViewModalComponent {
+interface ViewModalComponent {
 
 
-     public fun  getRepo():UniversityRepo;
+     fun  getRepo():UniversityRepo
 }

@@ -1,7 +1,6 @@
 package com.example.reterofitmvvm.viewmodal
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.reterofitmvvm.modal.data.University
 import com.example.reterofitmvvm.modal.repo.UniversityRepo
